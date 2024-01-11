@@ -10,3 +10,7 @@ Late Game ideas
 
  - Custom prompt option (Send the gpt to start with a certain oprning or play with certain habits)
  - Fine tune Gpt with new feature
+
+Status - Jan 11 2024
+ - Got Basic Chessboardjs to work on Front end section
+ - looking into backend situation
