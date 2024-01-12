@@ -16,22 +16,27 @@ value = ""
 def home():
    return "d2-d6"
 
-@app.route('/gpt', methods=['POST'])
+@app.route('/gpt', methods=['GET', 'POST'])
 def process():
+    position = str((request.get_json()).get('message'))
 
-    return jsonify({'message':"Test"}), 200
+    completion = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "Given this FEN position what move do you think is the best to do,"
+                              ", You are the black player, play give the response like this example a4-b2. Send the reponse only nothing else, Always do a move with the black peices."},
+            {"role": "user", "content": position}
+        ]
+    )
+    message = completion.choices[0].message.content;
+    return "{\"message\": \""+ message + "\"}", 200
 if __name__ == '__main__':
   app.run()
 
   '''
   
     # Perform any necessary backend processing with the received data
-    completion = client.chat.completions.create(
-     model="gpt-3.5-turbo",
-     messages=[{"role": "system",
-                "content": "Given this FEN position what move do you think is the best to do,"
-                           " give the response like this example a4-b2. Send the reponse only nothing else"},
-               {"role": "user", "content": data}])
+    
 
     # Return the response
     return completion
