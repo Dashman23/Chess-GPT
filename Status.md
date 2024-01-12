@@ -24,3 +24,4 @@ Currently Looking into the basic Chess game
 - Right side will be populated with a read-only remake of the chatgpt website, displaying what gets sent to the openai api and what gets received
 <br>
 - Working on Chatgpt implementation in backend (Heisn on GPT, David on Flask and js communication)
+- Implemented Chatgpt with chessboardjs (Heisn, Ryan oversaw the js)
