@@ -19,6 +19,7 @@
         .then(response => response.json())
         .then(data => {
             test = data.message;
+            console.log(test)
                 board1.move(test);
             })
         .catch(error => console.error('Error:', error));
@@ -51,13 +52,4 @@
         .catch(error => console.error('Error:', error));
 
     const url = `http://127.0.0.1:5000/gpt`;
-    fetch(`http://127.0.0.1:5000/gpt`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({message: output}),
-    })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
+
