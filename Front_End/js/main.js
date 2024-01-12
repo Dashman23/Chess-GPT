@@ -18,6 +18,19 @@ fetch('http://127.0.0.1:5000/')// Fetch request
 })
  .catch(error => console.error('Error:', error)); // Catch any errors
 
+
+
+
+const url = `http://127.0.0.1:5000/gpt`;
+fetch(url, {
+ method: "POST",
+ headers: {
+   "Content-Type": "text/plain",
+ },
+ body: board1.fen().text,
+})
+    .then(response => response.text())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+
 }, 0);
-
-
