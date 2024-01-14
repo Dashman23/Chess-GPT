@@ -24,7 +24,7 @@ def process():
     completion = client.chat.completions.create(
         model="gpt-4-1106-preview",
         messages=[
-            {"role": "system", "content": " You are a grand master chess player who follows all the chess principles, You have high knowledge of FEN positions. give the response like this example a4-b2 not a4xb2, only use - symbol in between. Send the reponse only nothing else"},
+            {"role": "system", "content": " You are a grand master chess player who follows all the chess principles, You have high knowledge of FEN positions. give the response like this example \'{\"message\": \"a2-b3\", \"Speech\": \"your_Speech_here\"}\'. Send the reponse only nothing else"},
             {"role": "user", "content": "Given these FEN positions what move do you think is the best to do,"
                               ", You are the black player, "
                                           "Always do a move with the black peices, they are the lower case letter of the peices. DO NOT MOVE WHITE PEICES, the upper case. Do not return most recent FEN position and no moving non existant peices." + str(moves)}
@@ -33,7 +33,7 @@ def process():
     message = completion.choices[0].message.content;
     print(moves)
     print(message)
-    return "{\"message\": \""+ message + "\"}", 200
+    return message, 200
 if __name__ == '__main__':
   app.run()
 
